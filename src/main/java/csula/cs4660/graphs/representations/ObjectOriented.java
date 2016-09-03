@@ -19,6 +19,7 @@ public class ObjectOriented implements Representation {
     private Collection<Edge> edges;
 
     public ObjectOriented(File file) {
+        // Testing commit
     }
 
     public ObjectOriented() {
