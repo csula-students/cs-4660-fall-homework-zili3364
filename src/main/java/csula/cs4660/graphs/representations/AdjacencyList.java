@@ -4,10 +4,12 @@ import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Scanner;
 
 /**
  * Adjacency list is probably the most common implementation to store the unknown
@@ -19,6 +21,12 @@ public class AdjacencyList implements Representation {
     private Map<Node, Collection<Edge>> adjacencyList;
 
     public AdjacencyList(File file) {
+        try {
+            Scanner input = new Scanner(file);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public AdjacencyList() {
