@@ -5,21 +5,24 @@ import csula.cs4660.graphs.Graph;
 import csula.cs4660.graphs.Node;
 
 import java.util.*;
+import java.util.Comparator;
 
 /**
  * As name, dijkstra search using graph structure
  */
 public class DijkstraSearch implements SearchStrategy {
     Node endTile = null;
+
     @Override
     public List<Edge> search(Graph graph, Node source, Node dist) {
         //Initialization
         List<Edge> result = new ArrayList<>();
         Map<Node, Node> previousNode = new HashMap<>();
         Map<Node, Integer> distance = new HashMap<>();
-        
+
         //// create priority vertex queue Q
         Queue<Node> queue = new LinkedList<>();
+        distance.put(source, 0);
         previousNode.put(source, null);
 
         for(Node vertex : graph.neighbors(source)){
@@ -55,7 +58,6 @@ public class DijkstraSearch implements SearchStrategy {
         Collections.reverse(result);
         System.out.println(result);
         return result;
-
 
     }
 }
