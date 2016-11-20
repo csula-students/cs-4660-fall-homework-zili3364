@@ -19,10 +19,10 @@ public class AlphaBeta {
                 int value = ((MiniMaxState) getBestMove(graph, node, depth - 1, alpha, beta, false).getData()).getValue();
                 bestValue = Math.max(bestValue, value);
                 alpha = Math.max(alpha, bestValue);
+                result.getData().setValue(bestValue);
                     if(beta <= alpha ){
                         break;
                     }
-                result.getData().setValue(bestValue);
             }
             return result;
         } else {
@@ -30,12 +30,11 @@ public class AlphaBeta {
             for (Node node : graph.neighbors(source)) {
                 int value = ((MiniMaxState) getBestMove(graph, node, depth - 1, alpha, beta, true).getData()).getValue();
                 bestValue = Math.min(bestValue, value);
-                result.getData().setValue(bestValue);
                 beta = Math.min(beta, bestValue);
+                result.getData().setValue(bestValue);
                     if(beta <= alpha){
                         break;
                     }
-                result.getData().setValue(bestValue);
             }
             return result;
         }
