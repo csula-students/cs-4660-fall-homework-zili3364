@@ -22,13 +22,6 @@ class Player {
 
         int[][] board = new int [20][30];
 
-        for (int i = 0; i < 20; i++){
-            for(int j = 0; j < 30; j++){
-                System.out.print(board[i][j]);
-            }
-        }
-
-        move = "RIGHT";
         // game loop
         while (true) {
             int N = in.nextInt(); // total number of players (2 to 4).
@@ -43,7 +36,7 @@ class Player {
                     y = Y1;
                     System.err.println("X1: " + X1 + " Y1: " + Y1);
                 }
-                board[X1][Y1] = 1;
+                board[Y1][X1] = 1;
 
             }
 
@@ -53,13 +46,16 @@ class Player {
             System.out.println(move); // A single line with UP, DOWN, LEFT or RIGHT
         }
     }
-
     public static String nextMove(int[][] board, int x, int y){
         if(x == 0 || x == 29){
+            //if(board[y][x])
             return "UP";
         }
         else if(y == 0 || y == 19){
-            return "LEFT";
+            if(board[y][x + 1] != 1)
+                return "RIGHT";
+            else
+                return "LEFT";
         }
 
         return "RIGHT";
