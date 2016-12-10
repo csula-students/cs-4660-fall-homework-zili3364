@@ -27,7 +27,6 @@ class Player {
             }
         }
 
-        //Creates arraylist of directions
         ArrayList<Direction> direction = new ArrayList<>();
         direction.add(new Direction(-1, 0, "LEFT"));
         direction.add(new Direction(0, 1, "DOWN"));
@@ -44,8 +43,13 @@ class Player {
                 int X1 = in.nextInt(); // starting X coordinate of lightcycle (can be the same as X0 if you play before this player)
                 int Y1 = in.nextInt(); // starting Y coordinate of lightcycle (can be the same as Y0 if you play before this player)
 
-                System.err.println("i: " + i + " " +X1 + " " + Y1);
-                board[Y1][X1] = i;
+                if(X1 != -1){
+                    board[Y1][X1] = i;
+                }
+                else{
+                    continue;
+                }
+
                 if(P == i){
                     x = X1;
                     y = Y1;
@@ -67,12 +71,12 @@ class Player {
 
             // Write an action using System.out.println()
             // To debug: System.err.println("Debug messages...");
-            System.err.println("move:" + move);
             System.out.println(move); // A single line with UP, DOWN, LEFT or RIGHT
         }
     }
 
     public static int floodFill(int[][] board, int x, int y){
+        // System.err.println(x + " " + y);
         if(x < 0 || x >= board[0].length || y < 0  || y >= board.length)
             return 0;
 
